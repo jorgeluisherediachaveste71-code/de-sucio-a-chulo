@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De Sucio a Chulo 👟</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --negro: #0d0d0d;
+  --blanco: #f5f5f0;
+  --amarillo: #f5c518;
+  --gris: #1a1a1a;
+  --gris2: #2a2a2a;
+  --muted: #888;
+  --radius: 14px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--negro); color: var(--blanco); min-height: 100vh; }
+
+/* HERO */
+.hero {
+  background: var(--negro);
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #222;
+}
+.hero::before {
+  content: '👟';
+  position: absolute;
+  font-size: 12rem;
+  opacity: 0.04;
+  top: -20px;
+  left: -30px;
+  transform: rotate(-20deg);
+}
+.hero::after {
+  content: '✨';
+  position: absolute;
+  font-size: 8rem;
+  opacity: 0.04;
+  bottom: -20px;
+  right: -10px;
+}
+.badge {
+  display: inline-block;
+  background: var(--amarillo);
+  color: var(--negro);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 12vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+}
+.hero-title span { color: var(--amarillo); }
+.hero-sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 300;
+  max-width: 300px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+/* SERVICIOS */
+.servicios {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.servicio-card {
+  background: var(--gris);
+  border: 1.5px solid #2a2a2a;
+  border-radius: var(--radius);
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.18s;
+  position: relative;
+}
+.servicio-card:hover { border-color: var(--amarillo); transform: translateY(-2px); }
+.servicio-card.sel {
+  border-color: var(--amarillo);
+  background: #1f1a00;
+}
+.servicio-card.sel::after {
+  content: '✓';
+  position: absolute;
+  top: 8px; right: 10px;
+  background: var(--amarillo);
+  color: var(--negro);
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+}
+.svc-ico { font-size: 1.6rem; margin-bottom: 6px; }
+.svc-name { font-size: 0.82rem; font-weight: 600; margin-bottom: 2px; }
+.svc-desc { font-size: 0.7rem; color: var(--muted); line-height: 1.4; }
+.svc-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  color: var(--amarillo);
+  margin-top: 6px;
+  letter-spacing: 0.05em;
+}
+
+/* ENTREGA INFO */
+.entrega-info {
+  margin: 0 1.5rem 1.5rem;
+  background: var(--gris);
+  border: 1px solid #2a2a2a;
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.entrega-title {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+.entrega-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  padding: 5px 0;
+  border-bottom: 1px solid #222;
+}
+.entrega-row:last-child { border-bottom: none; }
+.er-dia { color: var(--muted); }
+.er-entrega { color: var(--amarillo); font-weight: 500; }
+
+/* FORM */
+.form-wrap {
+  padding: 0 1.5rem 2rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.form-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  color: var(--blanco);
+}
+.fg { margin-bottom: 0.875rem; }
+.fl {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 5px;
+  display: block;
+}
+.fi {
+  width: 100%;
+  background: var(--gris);
+  border: 1.5px solid #2a2a2a;
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--blanco);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.fi:focus { border-color: var(--amarillo); }
+.fi::placeholder { color: #444; }
+textarea.fi { resize: none; }
+
+.entrega-estimada {
+  background: #1f1a00;
+  border: 1px solid var(--amarillo);
+  border-radius: var(--radius);
+  padding: 0.875rem 1rem;
+  margin-bottom: 1rem;
+  display: none;
+}
+.ee-label { font-size: 0.7rem; color: var(--amarillo); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; }
+.ee-fecha { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.05em; }
+
+.btn-pedido {
+  width: 100%;
+  padding: 16px;
+  background: var(--amarillo);
+  color: var(--negro);
+  border: none;
+  border-radius: var(--radius);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.15s;
+}
+.btn-pedido:hover { transform: translateY(-2px); opacity: 0.92; }
+.btn-pedido:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+/* CONFIRMACIÓN */
+.confirmacion {
+  display: none;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  max-width: 480px;
+  margin: 0 auto;
+  animation: fadeUp 0.4s ease;
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.conf-ico { font-size: 4rem; margin-bottom: 1rem; }
+.conf-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.conf-sub { font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem; }
+.conf-card {
+  background: var(--gris);
+  border: 1px solid #2a2a2a;
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  text-align: left;
+  margin-bottom: 1.25rem;
+}
+.crow { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #222; font-size: 0.82rem; }
+.crow:last-child { border-bottom: none; }
+.ck { color: var(--muted); }
+.cv { font-weight: 600; color: var(--amarillo); }
+.btn-nuevo {
+  width: 100%;
+  padding: 14px;
+  background: none;
+  color: var(--blanco);
+  border: 1.5px solid #333;
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.btn-nuevo:hover { border-color: var(--amarillo); }
+
+/* SECCIÓN TÍTULO */
+.sec-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0 1.5rem;
+  margin: 1.5rem auto 0.75rem;
+  max-width: 480px;
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<div id="main-flow">
+
+  <div class="hero">
+    <div class="badge">Servicio a domicilio · Chihuahua</div>
+    <h1 class="hero-title">De Sucio<br>a <span>Chulo</span></h1>
+    <p class="hero-sub">Limpieza profesional de calzado. Lo recogemos, lo dejamos impecable y lo entregamos.</p>
+  </div>
+
+  <span class="sec-label">¿Qué servicio necesitas?</span>
+  <div class="servicios" id="servicios-grid">
+    <div class="servicio-card" onclick="selSvc(this,'Tennis / Tenis','Limpieza interior y exterior','$160')">
+      <div class="svc-ico">👟</div>
+      <div class="svc-name">Tennis / Tenis</div>
+      <div class="svc-desc">Limpieza interior y exterior completa</div>
+      <div class="svc-price">$160</div>
+    </div>
+    <div class="servicio-card" onclick="selSvc(this,'Boleada de zapatos','Brillo profesional','$50')">
+      <div class="svc-ico">👞</div>
+      <div class="svc-name">Boleada de zapatos</div>
+      <div class="svc-desc">Brillo y cuidado profesional</div>
+      <div class="svc-price">$50</div>
+    </div>
+    <div class="servicio-card" onclick="selSvc(this,'Botas','Limpieza y boleada','$70')">
+      <div class="svc-ico">🥾</div>
+      <div class="svc-name">Botas</div>
+      <div class="svc-desc">Limpieza completa y boleada</div>
+      <div class="svc-price">$70</div>
+    </div>
+    <div class="servicio-card" onclick="selSvc(this,'Tapas de tacones','Reparación de tapas','Consultar')">
+      <div class="svc-ico">👠</div>
+      <div class="svc-name">Tapas de tacones</div>
+      <div class="svc-desc">Reposición de tapas desgastadas</div>
+      <div class="svc-price">Consultar</div>
+    </div>
+  </div>
+
+  <span class="sec-label">Tiempos de entrega</span>
+  <div class="entrega-info" style="margin:0 1.5rem 1.5rem;max-width:none">
+    <div class="entrega-title">Si lo entregamos de mañana...</div>
+    <div class="entrega-row"><span class="er-dia">Lunes temprano</span><span class="er-entrega">Listo el martes a mediodía</span></div>
+    <div class="entrega-row"><span class="er-dia">Martes temprano</span><span class="er-entrega">Listo el miércoles</span></div>
+    <div class="entrega-row"><span class="er-dia">Miércoles temprano</span><span class="er-entrega">Listo el jueves</span></div>
+    <div class="entrega-row"><span class="er-dia">Jueves temprano</span><span class="er-entrega">Listo el viernes</span></div>
+    <div class="entrega-row"><span class="er-dia">Viernes temprano</span><span class="er-entrega">Listo el lunes siguiente</span></div>
+  </div>
+
+  <div class="form-wrap">
+    <div class="form-title">Tu pedido</div>
+
+    <div class="fg">
+      <label class="fl">Nombre completo</label>
+      <input class="fi" id="inp-nombre" type="text" placeholder="Ej. Juan García">
+    </div>
+    <div class="fg">
+      <label class="fl">WhatsApp</label>
+      <input class="fi" id="inp-tel" type="tel" placeholder="+52 614 000 0000">
+    </div>
+    <div class="fg">
+      <label class="fl">Colonia / dirección de recolección</label>
+      <input class="fi" id="inp-dir" type="text" placeholder="Ej. Colonia Centro">
+    </div>
+    <div class="fg">
+      <label class="fl">Descripción del calzado</label>
+      <textarea class="fi" id="inp-desc" rows="3" placeholder="Ej. Tennis Nike blancos, muy sucios por dentro y por fuera"></textarea>
+    </div>
+
+    <div class="entrega-estimada" id="entrega-box">
+      <div class="ee-label">Entrega estimada</div>
+      <div class="ee-fecha" id="entrega-fecha">—</div>
+    </div>
+
+    <button class="btn-pedido" id="btn-enviar" onclick="enviarPedido()">PEDIR AHORA 👟</button>
+  </div>
+
+</div>
+
+<div class="confirmacion" id="confirmacion">
+  <div class="conf-ico">✨</div>
+  <h2 class="conf-title">¡Pedido enviado!</h2>
+  <p class="conf-sub" id="conf-sub">Te contactamos pronto para coordinar la recolección.</p>
+  <div class="conf-card" id="conf-detalle"></div>
+  <button class="btn-nuevo" onclick="resetForm()">Hacer otro pedido</button>
+</div>
+
+<script>
+const WA = '525587090730';
+let svcSel = null;
+
+function selSvc(el, nombre, desc, precio) {
+  document.querySelectorAll('.servicio-card').forEach(c => c.classList.remove('sel'));
+  el.classList.add('sel');
+  svcSel = { nombre, desc, precio };
+  calcEntrega();
+}
+
+function calcEntrega() {
+  const hoy = new Date();
+  const dia = hoy.getDay();
+  const dias = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+  let entrega = new Date(hoy);
+
+  if (dia === 0) entrega.setDate(entrega.getDate() + 2);
+  else if (dia === 5) entrega.setDate(entrega.getDate() + 3);
+  else if (dia === 6) entrega.setDate(entrega.getDate() + 3);
+  else entrega.setDate(entrega.getDate() + 1);
+
+  const fechaStr = `${dias[entrega.getDay()]} ${entrega.getDate()} de ${meses[entrega.getMonth()]}`;
+  document.getElementById('entrega-fecha').textContent = fechaStr;
+  document.getElementById('entrega-box').style.display = 'block';
+}
+
+function enviarPedido() {
+  const nombre = document.getElementById('inp-nombre').value.trim();
+  const tel = document.getElementById('inp-tel').value.trim();
+  const dir = document.getElementById('inp-dir').value.trim();
+  const desc = document.getElementById('inp-desc').value.trim();
+
+  if (!nombre || !tel || !dir) { alert('Por favor llena nombre, WhatsApp y dirección'); return; }
+  if (!svcSel) { alert('Selecciona un servicio'); return; }
+
+  const entrega = document.getElementById('entrega-fecha').textContent;
+
+  const msg = `🧹 *NUEVO PEDIDO — De Sucio a Chulo*\n\n` +
+    `👤 *Cliente:* ${nombre}\n` +
+    `📱 *WhatsApp:* ${tel}\n` +
+    `📍 *Dirección:* ${dir}\n` +
+    `👟 *Servicio:* ${svcSel.nombre} (${svcSel.precio})\n` +
+    `📝 *Calzado:* ${desc||'Sin descripción'}\n` +
+    `📅 *Entrega estimada:* ${entrega}`;
+
+  document.getElementById('conf-sub').textContent = `¡Listo ${nombre}! Te contactamos pronto para coordinar la recolección.`;
+  document.getElementById('conf-detalle').innerHTML = `
+    <div class="crow"><span class="ck">Servicio</span><span class="cv">${svcSel.nombre}</span></div>
+    <div class="crow"><span class="ck">Precio</span><span class="cv">${svcSel.precio}</span></div>
+    <div class="crow"><span class="ck">Entrega estimada</span><span class="cv">${entrega}</span></div>
+    <div class="crow"><span class="ck">Recolección en</span><span class="cv">${dir}</span></div>
+  `;
+
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
+
+  document.getElementById('main-flow').style.display = 'none';
+  document.getElementById('confirmacion').style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function resetForm() {
+  document.getElementById('inp-nombre').value = '';
+  document.getElementById('inp-tel').value = '';
+  document.getElementById('inp-dir').value = '';
+  document.getElementById('inp-desc').value = '';
+  document.querySelectorAll('.servicio-card').forEach(c => c.classList.remove('sel'));
+  svcSel = null;
+  document.getElementById('entrega-box').style.display = 'none';
+  document.getElementById('main-flow').style.display = 'block';
+  document.getElementById('confirmacion').style.display = 'none';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+calcEntrega();
+</script>
+</body>
+</html>
