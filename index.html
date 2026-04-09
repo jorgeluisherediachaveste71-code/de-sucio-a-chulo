@@ -354,9 +354,10 @@ const SVCS={
 
 function toggleSvc(id,precio,nombre,tiempo){
   const svc=SVCS[id];
-  if(svc.cant>0) return;
+  if(svc.cant>0) { quitarSvc(id); return; }
   svc.cant=1;
   document.getElementById('svc-'+id).classList.add('activo');
+  document.getElementById('cnt-'+id).textContent='1';
   actualizarSubtotal(id);
   actualizarTotal();
 }
