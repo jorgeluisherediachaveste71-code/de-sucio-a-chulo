@@ -3,828 +3,463 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taller Mecánico Automotriz RASA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>De Sucio a Chulo 👟</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --negro: #0d0d0d;
-    --rojo: #c0392b;
-    --rojo-hover: #e74c3c;
-    --acero: #1a1a1a;
-    --gris: #2c2c2c;
-    --gris-claro: #888;
-    --blanco: #f5f0eb;
-    --oro: #d4a843;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--negro);
-    color: var(--blanco);
-    overflow-x: hidden;
-  }
-  a { color: inherit; text-decoration: none; }
+:root{--negro:#0d0d0d;--blanco:#f5f5f0;--amarillo:#f5c518;--gris:#1a1a1a;--gris2:#2a2a2a;--muted:#888;--radius:14px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--negro);color:var(--blanco);min-height:100vh;}
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(13,13,13,0.95);
-    border-bottom: 1px solid #222;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 5vw; height: 64px;
-    backdrop-filter: blur(8px);
-  }
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem; letter-spacing: 0.1em;
-    color: var(--blanco);
-  }
-  .nav-logo span { color: var(--rojo); }
-  .nav-links {
-    display: flex; gap: 2rem; list-style: none;
-    font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
-  }
-  .nav-links a {
-    color: var(--gris-claro);
-    transition: color 0.2s;
-    font-weight: 400;
-  }
-  .nav-links a:hover { color: var(--blanco); }
-  .nav-cta {
-    background: var(--rojo); color: #fff;
-    padding: 0.5rem 1.4rem; font-size: 0.8rem;
-    font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-    cursor: pointer; border: none; transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--rojo-hover); }
+.hero{background:var(--negro);padding:3rem 1.5rem 2rem;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid #222;}
+.hero::before{content:'👟';position:absolute;font-size:12rem;opacity:0.04;top:-20px;left:-30px;transform:rotate(-20deg);}
+.hero::after{content:'✨';position:absolute;font-size:8rem;opacity:0.04;bottom:-20px;right:-10px;}
+.badge{display:inline-block;background:var(--amarillo);color:var(--negro);font-size:0.7rem;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,12vw,5rem);line-height:0.95;letter-spacing:0.02em;margin-bottom:0.75rem;}
+.hero-title span{color:var(--amarillo);}
+.hero-sub{font-size:0.9rem;color:var(--muted);font-weight:300;max-width:300px;margin:0 auto 1.5rem;line-height:1.6;}
 
-  /* HERO */
-  .hero {
-    min-height: 100vh; padding-top: 64px;
-    display: grid; grid-template-columns: 1fr 1fr;
-    align-items: center;
-  }
-  .hero-left {
-    padding: 6rem 5vw 4rem 10vw;
-  }
-  .hero-tag {
-    display: inline-block;
-    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--oro); margin-bottom: 1.5rem;
-    border-left: 2px solid var(--oro); padding-left: 0.8rem;
-  }
-  .hero-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3.5rem, 8vw, 7rem);
-    line-height: 0.95; letter-spacing: 0.02em;
-    margin-bottom: 1.5rem;
-  }
-  .hero-title .accent { color: var(--rojo); }
-  .hero-desc {
-    font-size: 1rem; line-height: 1.7;
-    color: #aaa; max-width: 420px;
-    margin-bottom: 2.5rem;
-  }
-  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--rojo); color: #fff; border: none;
-    padding: 0.85rem 2rem; font-size: 0.85rem;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    cursor: pointer; transition: background 0.2s; font-family: 'DM Sans', sans-serif;
-  }
-  .btn-primary:hover { background: var(--rojo-hover); }
-  .btn-outline {
-    background: transparent; color: var(--blanco);
-    border: 1px solid #444; padding: 0.85rem 2rem;
-    font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
-    cursor: pointer; transition: border-color 0.2s, color 0.2s; font-family: 'DM Sans', sans-serif;
-  }
-  .btn-outline:hover { border-color: var(--blanco); }
-  .hero-right {
-    background: var(--acero);
-    height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
-  }
-  .hero-img-placeholder {
-    width: 100%; height: 100%;
-    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 1rem;
-  }
-  .hero-img-placeholder svg { opacity: 0.15; }
-  .hero-img-placeholder p {
-    color: #444; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
-  }
-  .hero-stats {
-    display: flex; gap: 3rem;
-    margin-top: 3rem; padding-top: 2rem;
-    border-top: 1px solid #222;
-  }
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.5rem; color: var(--rojo); line-height: 1;
-  }
-  .stat-label { font-size: 0.75rem; color: #777; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.3rem; }
+.wrap{max-width:480px;margin:0 auto;padding:0 1.5rem;}
+.sec-label{font-size:0.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin:1.5rem 0 0.75rem;display:block;}
 
-  /* TICKER */
-  .ticker {
-    background: var(--rojo); padding: 0.7rem 0;
-    overflow: hidden; white-space: nowrap;
-  }
-  .ticker-inner {
-    display: inline-flex; gap: 0;
-    animation: ticker 20s linear infinite;
-  }
-  .ticker-item {
-    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
-    padding: 0 2rem; color: #fff; font-weight: 500;
-  }
-  .ticker-dot { color: rgba(255,255,255,0.4); }
-  @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+/* SERVICIOS */
+.servicios{display:flex;flex-direction:column;gap:8px;}
+.svc{background:var(--gris);border:1.5px solid var(--gris2);border-radius:var(--radius);padding:1rem;transition:all 0.18s;}
+.svc-header{display:flex;align-items:center;gap:12px;cursor:pointer;}
+.svc-ico{font-size:1.4rem;flex-shrink:0;}
+.svc-info{flex:1;}
+.svc-name{font-size:0.88rem;font-weight:600;margin-bottom:1px;}
+.svc-desc{font-size:0.7rem;color:var(--muted);line-height:1.4;}
+.svc-precio{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--amarillo);white-space:nowrap;}
+.svc-time{font-size:0.62rem;color:#666;text-align:right;}
 
-  /* SERVICES */
-  section { padding: 6rem 5vw; }
-  .section-tag {
-    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--rojo); margin-bottom: 0.7rem;
-  }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    letter-spacing: 0.03em; line-height: 1;
-  }
-  .section-title .muted { color: #444; }
-  .services-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1px; margin-top: 4rem;
-    border: 1px solid #222;
-  }
-  .service-card {
-    background: var(--acero); padding: 2.5rem 2rem;
-    border: 1px solid #222; position: relative;
-    overflow: hidden; transition: background 0.3s;
-  }
-  .service-card::after {
-    content: ''; position: absolute;
-    bottom: 0; left: 0; width: 0; height: 2px;
-    background: var(--rojo); transition: width 0.3s;
-  }
-  .service-card:hover { background: #1f1f1f; }
-  .service-card:hover::after { width: 100%; }
-  .service-icon {
-    width: 48px; height: 48px; margin-bottom: 1.5rem;
-    color: var(--rojo);
-  }
-  .service-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem; letter-spacing: 0.05em;
-    margin-bottom: 0.8rem;
-  }
-  .service-desc { font-size: 0.88rem; color: #888; line-height: 1.6; }
+.svc-controls{display:none;margin-top:0.875rem;padding-top:0.875rem;border-top:1px solid var(--gris2);align-items:center;justify-content:space-between;gap:12px;}
+.svc.activo .svc-controls{display:flex;}
+.svc.activo{border-color:var(--amarillo);background:#1a1500;}
 
-  /* CLIENTES */
-  .clients-section { padding: 4rem 5vw; background: var(--acero); }
-  .clients-row {
-    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
-    margin-top: 2rem;
-  }
-  .client-badge {
-    padding: 0.6rem 1.5rem; border: 1px solid #333;
-    font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: #666; transition: all 0.2s;
-  }
-  .client-badge:hover { border-color: #666; color: #aaa; }
+.cnt-wrap{display:flex;align-items:center;gap:10px;}
+.cnt-btn{width:30px;height:30px;border-radius:8px;border:1.5px solid #333;background:none;color:var(--blanco);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.15s;flex-shrink:0;}
+.cnt-btn:hover{border-color:var(--amarillo);}
+.cnt-num{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;min-width:20px;text-align:center;}
+.svc-subtotal{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--amarillo);}
+.btn-quitar{background:none;border:none;color:#555;font-size:0.72rem;cursor:pointer;text-decoration:underline;font-family:'DM Sans',sans-serif;}
+.btn-quitar:hover{color:var(--amarillo);}
 
-  /* ABOUT STRIP */
-  .about-strip {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 0; padding: 0; min-height: 500px;
-  }
-  .about-img-side {
-    background: var(--gris);
-    display: flex; align-items: center; justify-content: center;
-    min-height: 400px;
-  }
-  .about-img-side svg { opacity: 0.12; }
-  .about-text-side {
-    padding: 5rem 6vw; background: var(--negro);
-    display: flex; flex-direction: column; justify-content: center;
-  }
-  .about-text-side p { color: #999; line-height: 1.75; font-size: 0.95rem; margin-top: 1.5rem; }
+/* COTIZACIÓN DIRECTA */
+.sec-cot{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.svc-cot{background:var(--gris);border:1.5px solid var(--gris2);border-radius:var(--radius);padding:1rem;cursor:pointer;transition:all 0.18s;text-decoration:none;display:block;}
+.svc-cot:hover{border-color:#25d366;transform:translateY(-2px);}
+.svc-cot .svc-precio{color:#25d366;}
+.wa-hint{font-size:0.65rem;color:#25d366;margin-top:4px;}
 
-  /* CITA */
-  #cita { background: var(--acero); }
-  .cita-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 5rem; margin-top: 3rem;
-  }
-  .form-group { margin-bottom: 1.2rem; }
-  .form-group label {
-    display: block; font-size: 0.75rem;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: #666; margin-bottom: 0.5rem;
-  }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%; background: #111;
-    border: 1px solid #333; color: var(--blanco);
-    padding: 0.85rem 1rem; font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem; outline: none;
-    transition: border-color 0.2s;
-  }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus { border-color: var(--rojo); }
-  .form-group select option { background: #111; }
-  .form-group textarea { resize: vertical; min-height: 100px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .cita-info h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem; letter-spacing: 0.05em;
-    margin-bottom: 2rem;
-  }
-  .info-row {
-    display: flex; gap: 1rem; align-items: flex-start;
-    margin-bottom: 1.5rem; padding-bottom: 1.5rem;
-    border-bottom: 1px solid #222;
-  }
-  .info-icon { color: var(--rojo); margin-top: 2px; flex-shrink: 0; }
-  .info-label { font-size: 0.72rem; color: #666; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
-  .info-val { font-size: 0.9rem; color: #ccc; }
+/* TOTAL FLOTANTE */
+.total-flotante{position:fixed;bottom:0;left:0;right:0;background:#1a1500;border-top:2px solid var(--amarillo);padding:1rem 1.5rem;z-index:100;display:none;max-width:480px;margin:0 auto;}
+.total-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.total-label{font-size:0.75rem;color:var(--muted);}
+.total-val{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--amarillo);}
+.btn-continuar{background:var(--amarillo);color:var(--negro);border:none;border-radius:10px;padding:10px 20px;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.06em;cursor:pointer;white-space:nowrap;}
 
-  /* FOOTER */
-  footer {
-    background: #080808;
-    border-top: 1px solid #1a1a1a;
-    padding: 3rem 5vw;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 1rem;
-  }
-  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; }
-  .footer-logo span { color: var(--rojo); }
-  footer p { font-size: 0.78rem; color: #555; }
+/* TABLA TIEMPOS */
+.entrega-info{background:var(--gris);border:1px solid var(--gris2);border-radius:var(--radius);padding:1rem 1.25rem;margin:1rem 0 1.5rem;}
+.entrega-title{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-bottom:0.75rem;}
+.er{display:flex;justify-content:space-between;font-size:0.78rem;padding:5px 0;border-bottom:1px solid #222;}
+.er:last-child{border-bottom:none;}
+.er-d{color:var(--muted);}
+.er-e{color:var(--amarillo);font-weight:500;}
 
-  /* CHATBOT */
-  #chat-bubble {
-    position: fixed; bottom: 2rem; right: 2rem; z-index: 1000;
-  }
-  #chat-toggle {
-    width: 60px; height: 60px; border-radius: 50%;
-    background: var(--rojo); border: none; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 20px rgba(192,57,43,0.5);
-    transition: transform 0.2s, background 0.2s;
-  }
-  #chat-toggle:hover { transform: scale(1.08); background: var(--rojo-hover); }
-  #chat-toggle svg { color: #fff; }
-  #chat-panel {
-    position: absolute; bottom: 80px; right: 0;
-    width: 340px; background: var(--acero);
-    border: 1px solid #333; overflow: hidden;
-    display: none; flex-direction: column;
-    max-height: 520px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-  }
-  #chat-panel.open { display: flex; }
-  .chat-header {
-    background: var(--rojo); padding: 1rem 1.2rem;
-    display: flex; align-items: center; gap: 0.8rem;
-  }
-  .chat-avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: rgba(255,255,255,0.15);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .chat-header-info h4 { font-size: 0.9rem; font-weight: 500; color: #fff; }
-  .chat-header-info span { font-size: 0.72rem; color: rgba(255,255,255,0.6); }
-  .chat-messages {
-    flex: 1; overflow-y: auto; padding: 1rem;
-    display: flex; flex-direction: column; gap: 0.8rem;
-    background: var(--negro); min-height: 280px;
-  }
-  .msg {
-    max-width: 85%; padding: 0.7rem 1rem;
-    font-size: 0.85rem; line-height: 1.5;
-  }
-  .msg.bot {
-    background: var(--acero); color: var(--blanco);
-    border-left: 2px solid var(--rojo); align-self: flex-start;
-  }
-  .msg.user {
-    background: var(--rojo); color: #fff;
-    align-self: flex-end;
-  }
-  .chat-quick {
-    padding: 0.7rem 1rem;
-    display: flex; flex-wrap: wrap; gap: 0.4rem;
-    background: #111; border-top: 1px solid #222;
-  }
-  .quick-btn {
-    background: #1e1e1e; border: 1px solid #333; color: #aaa;
-    padding: 0.35rem 0.8rem; font-size: 0.75rem; cursor: pointer;
-    transition: all 0.2s; font-family: 'DM Sans', sans-serif;
-  }
-  .quick-btn:hover { border-color: var(--rojo); color: var(--blanco); }
-  .chat-input-row {
-    display: flex; gap: 0; border-top: 1px solid #222;
-  }
-  .chat-input-row input {
-    flex: 1; background: #111; border: none; color: var(--blanco);
-    padding: 0.85rem 1rem; font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem; outline: none;
-  }
-  .chat-input-row button {
-    background: var(--rojo); border: none; color: #fff;
-    padding: 0 1.2rem; cursor: pointer; transition: background 0.2s;
-  }
-  .chat-input-row button:hover { background: var(--rojo-hover); }
-  .typing { display: flex; gap: 4px; align-items: center; padding: 0.7rem 1rem; }
-  .typing span {
-    width: 6px; height: 6px; background: #666; border-radius: 50%;
-    animation: bounce 1s infinite;
-  }
-  .typing span:nth-child(2) { animation-delay: 0.15s; }
-  .typing span:nth-child(3) { animation-delay: 0.3s; }
-  @keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
+/* RESUMEN PEDIDO */
+.resumen{background:var(--gris);border:1.5px solid var(--amarillo);border-radius:var(--radius);padding:1rem;margin-bottom:1rem;display:none;}
+.resumen-title{font-size:0.72rem;color:var(--amarillo);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.75rem;}
+.resumen-row{display:flex;justify-content:space-between;font-size:0.82rem;padding:4px 0;border-bottom:1px solid #222;}
+.resumen-row:last-child{border-bottom:none;font-weight:700;color:var(--amarillo);padding-top:8px;}
 
-  /* TOAST */
-  #toast {
-    position: fixed; bottom: 6rem; right: 2rem;
-    background: var(--acero); border: 1px solid var(--rojo);
-    padding: 0.8rem 1.2rem; font-size: 0.83rem;
-    color: var(--blanco); z-index: 1100;
-    display: none;
-    animation: fadeInUp 0.3s ease;
-  }
-  @keyframes fadeInUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+/* FORM */
+.form-section{padding-bottom:120px;}
+.fg{margin-bottom:0.875rem;}
+.fl{font-size:0.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;display:block;}
+.fi{width:100%;background:var(--gris);border:1.5px solid var(--gris2);border-radius:var(--radius);padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--blanco);outline:none;transition:border-color 0.15s;}
+.fi:focus{border-color:var(--amarillo);}
+.fi::placeholder{color:#444;}
+textarea.fi{resize:none;}
 
-  /* MOBILE */
-  @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .hero-left { padding: 3rem 5vw; }
-    .about-strip { grid-template-columns: 1fr; }
-    .about-img-side { display: none; }
-    .cita-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .form-row { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-    #chat-panel { width: 300px; right: -10px; }
-  }
+/* CONFIRMACIÓN */
+.confirmacion{display:none;text-align:center;padding:3rem 1.5rem;max-width:480px;margin:0 auto;animation:fadeUp 0.4s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.conf-ico{font-size:4rem;margin-bottom:1rem;}
+.conf-title{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.05em;margin-bottom:0.5rem;}
+.conf-sub{font-size:0.875rem;color:var(--muted);line-height:1.6;margin-bottom:1.5rem;}
+.conf-card{background:var(--gris);border:1px solid var(--gris2);border-radius:var(--radius);padding:1.25rem;text-align:left;margin-bottom:1.25rem;}
+.crow{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #222;font-size:0.82rem;}
+.crow:last-child{border-bottom:none;}
+.ck{color:var(--muted);}
+.cv{font-weight:600;color:var(--amarillo);}
+.btn-nuevo{width:100%;padding:14px;background:none;color:var(--blanco);border:1.5px solid #333;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;}
+.btn-nuevo:hover{border-color:var(--amarillo);}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">R<span>A</span>SA</div>
-  <ul class="nav-links">
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#cita">Agendar</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-  <button class="nav-cta" onclick="document.getElementById('cita').scrollIntoView({behavior:'smooth'})">Agendar Cita</button>
-</nav>
+<div id="main-flow">
+  <div class="hero">
+    <div class="badge">Servicio a domicilio · Chihuahua</div>
+    <h1 class="hero-title">De Sucio<br>a <span>Chulo</span></h1>
+    <p class="hero-sub">Limpieza profesional de calzado. Lo recogemos, lo dejamos impecable y lo entregamos.</p>
+  </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-tag">Chihuahua, México · +20 años de experiencia</div>
-    <h1 class="hero-title">
-      TU AUTO<br>
-      EN <span class="accent">MANOS</span><br>
-      EXPERTAS
-    </h1>
-    <p class="hero-desc">Taller mecánico automotriz especializado en reparación, mantenimiento y diagnóstico de vehículos para particulares, empresas y gobierno.</p>
-    <div class="hero-buttons">
-      <button class="btn-primary" onclick="document.getElementById('cita').scrollIntoView({behavior:'smooth'})">Agendar Cita</button>
-      <button class="btn-outline" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Ver Servicios</button>
+  <div class="wrap">
+    <span class="sec-label">Elige tus servicios — puedes agregar varios</span>
+
+    <div class="servicios">
+      <div class="svc" id="svc-tenis-ext">
+        <div class="svc-header" onclick="toggleSvc('tenis-ext',80,'Tenis exterior','mismo día')">
+          <div class="svc-ico">👟</div>
+          <div class="svc-info">
+            <div class="svc-name">Tenis exterior</div>
+            <div class="svc-desc">Limpieza solo por fuera</div>
+          </div>
+          <div>
+            <div class="svc-precio">$80 c/u</div>
+            <div class="svc-time">Mismo día</div>
+          </div>
+        </div>
+        <div class="svc-controls">
+          <div class="cnt-wrap">
+            <button class="cnt-btn" onclick="cambiarCant('tenis-ext',-1)">−</button>
+            <span class="cnt-num" id="cnt-tenis-ext">1</span>
+            <button class="cnt-btn" onclick="cambiarCant('tenis-ext',1)">+</button>
+            <span style="font-size:0.75rem;color:var(--muted)">piezas</span>
+          </div>
+          <div style="text-align:right">
+            <div class="svc-subtotal" id="sub-tenis-ext">$80</div>
+            <button class="btn-quitar" onclick="quitarSvc('tenis-ext')">quitar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc" id="svc-tenis-comp">
+        <div class="svc-header" onclick="toggleSvc('tenis-comp',160,'Tenis completo','2 días')">
+          <div class="svc-ico">✨</div>
+          <div class="svc-info">
+            <div class="svc-name">Tenis completo</div>
+            <div class="svc-desc">Blanqueamiento, desmanchado, retoque de pintura</div>
+          </div>
+          <div>
+            <div class="svc-precio">$160 c/u</div>
+            <div class="svc-time">2 días</div>
+          </div>
+        </div>
+        <div class="svc-controls">
+          <div class="cnt-wrap">
+            <button class="cnt-btn" onclick="cambiarCant('tenis-comp',-1)">−</button>
+            <span class="cnt-num" id="cnt-tenis-comp">1</span>
+            <button class="cnt-btn" onclick="cambiarCant('tenis-comp',1)">+</button>
+            <span style="font-size:0.75rem;color:var(--muted)">piezas</span>
+          </div>
+          <div style="text-align:right">
+            <div class="svc-subtotal" id="sub-tenis-comp">$160</div>
+            <button class="btn-quitar" onclick="quitarSvc('tenis-comp')">quitar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc" id="svc-boleada">
+        <div class="svc-header" onclick="toggleSvc('boleada',50,'Boleada de zapatos','1 día')">
+          <div class="svc-ico">👞</div>
+          <div class="svc-info">
+            <div class="svc-name">Boleada de zapatos</div>
+            <div class="svc-desc">Brillo y cuidado profesional</div>
+          </div>
+          <div>
+            <div class="svc-precio">$50 c/u</div>
+            <div class="svc-time">1 día</div>
+          </div>
+        </div>
+        <div class="svc-controls">
+          <div class="cnt-wrap">
+            <button class="cnt-btn" onclick="cambiarCant('boleada',-1)">−</button>
+            <span class="cnt-num" id="cnt-boleada">1</span>
+            <button class="cnt-btn" onclick="cambiarCant('boleada',1)">+</button>
+            <span style="font-size:0.75rem;color:var(--muted)">piezas</span>
+          </div>
+          <div style="text-align:right">
+            <div class="svc-subtotal" id="sub-boleada">$50</div>
+            <button class="btn-quitar" onclick="quitarSvc('boleada')">quitar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc" id="svc-tapas">
+        <div class="svc-header" onclick="toggleSvc('tapas',120,'Tapas de zapatos','1-2 días')">
+          <div class="svc-ico">👠</div>
+          <div class="svc-info">
+            <div class="svc-name">Tapas de zapatos</div>
+            <div class="svc-desc">Reposición de tapas por par</div>
+          </div>
+          <div>
+            <div class="svc-precio">$120 par</div>
+            <div class="svc-time">1-2 días</div>
+          </div>
+        </div>
+        <div class="svc-controls">
+          <div class="cnt-wrap">
+            <button class="cnt-btn" onclick="cambiarCant('tapas',-1)">−</button>
+            <span class="cnt-num" id="cnt-tapas">1</span>
+            <button class="cnt-btn" onclick="cambiarCant('tapas',1)">+</button>
+            <span style="font-size:0.75rem;color:var(--muted)">pares</span>
+          </div>
+          <div style="text-align:right">
+            <div class="svc-subtotal" id="sub-tapas">$120</div>
+            <button class="btn-quitar" onclick="quitarSvc('tapas')">quitar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc" id="svc-tapitas">
+        <div class="svc-header" onclick="toggleSvc('tapitas',140,'Tapitas para tacones','1-2 días')">
+          <div class="svc-ico">👡</div>
+          <div class="svc-info">
+            <div class="svc-name">Tapitas para tacones</div>
+            <div class="svc-desc">Reposición de tapitas por par</div>
+          </div>
+          <div>
+            <div class="svc-precio">$140 par</div>
+            <div class="svc-time">1-2 días</div>
+          </div>
+        </div>
+        <div class="svc-controls">
+          <div class="cnt-wrap">
+            <button class="cnt-btn" onclick="cambiarCant('tapitas',-1)">−</button>
+            <span class="cnt-num" id="cnt-tapitas">1</span>
+            <button class="cnt-btn" onclick="cambiarCant('tapitas',1)">+</button>
+            <span style="font-size:0.75rem;color:var(--muted)">pares</span>
+          </div>
+          <div style="text-align:right">
+            <div class="svc-subtotal" id="sub-tapitas">$140</div>
+            <button class="btn-quitar" onclick="quitarSvc('tapitas')">quitar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc" id="svc-medias">
+        <div class="svc-header" onclick="toggleSvc('medias',160,'Medias vidas','2-3 días')">
+          <div class="svc-ico">🔧</div>
+          <div class="svc-info">
+            <div class="svc-name">Medias vidas</div>
+            <div class="svc-desc">Reparación completa por par</div>
+          </div>
+          <div>
+            <div class="svc-precio">$160 par</div>
+            <div class="svc-time">2-3 días</div>
+          </div>
+        </div>
+        <div class="svc-controls">
+          <div class="cnt-wrap">
+            <button class="cnt-btn" onclick="cambiarCant('medias',-1)">−</button>
+            <span class="cnt-num" id="cnt-medias">1</span>
+            <button class="cnt-btn" onclick="cambiarCant('medias',1)">+</button>
+            <span style="font-size:0.75rem;color:var(--muted)">pares</span>
+          </div>
+          <div style="text-align:right">
+            <div class="svc-subtotal" id="sub-medias">$160</div>
+            <button class="btn-quitar" onclick="quitarSvc('medias')">quitar</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div>
-        <div class="stat-num">20+</div>
-        <div class="stat-label">Años de experiencia</div>
+
+    <span class="sec-label">Cotización directa por WhatsApp</span>
+    <div class="sec-cot">
+      <a class="svc-cot" onclick="cotizar('Bolsas, carteras y chamarras de piel')">
+        <div class="svc-ico">👜</div>
+        <div class="svc-name">Piel y cuero</div>
+        <div class="svc-desc">Bolsas, carteras, chamarras</div>
+        <div class="svc-precio">Cotizar</div>
+        <div class="wa-hint">💬 WhatsApp directo</div>
+      </a>
+      <a class="svc-cot" onclick="cotizar('Reparación general de calzado')">
+        <div class="svc-ico">🛠️</div>
+        <div class="svc-name">Reparación general</div>
+        <div class="svc-desc">Según el trabajo</div>
+        <div class="svc-precio">Cotizar</div>
+        <div class="wa-hint">💬 WhatsApp directo</div>
+      </a>
+    </div>
+
+    <span class="sec-label">Tiempos de entrega</span>
+    <div class="entrega-info">
+      <div class="entrega-title">Si entregamos el calzado de mañana...</div>
+      <div class="er"><span class="er-d">Lunes temprano</span><span class="er-e">Listo martes a mediodía</span></div>
+      <div class="er"><span class="er-d">Martes temprano</span><span class="er-e">Listo el miércoles</span></div>
+      <div class="er"><span class="er-d">Miércoles temprano</span><span class="er-e">Listo el jueves</span></div>
+      <div class="er"><span class="er-d">Jueves temprano</span><span class="er-e">Listo el viernes</span></div>
+      <div class="er"><span class="er-d">Viernes temprano</span><span class="er-e">Listo el lunes siguiente</span></div>
+    </div>
+
+    <div class="form-section">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.05em;margin-bottom:1rem;">Tu pedido</div>
+
+      <div class="resumen" id="resumen-box">
+        <div class="resumen-title">Resumen de servicios</div>
+        <div id="resumen-items"></div>
       </div>
-      <div>
-        <div class="stat-num">3</div>
-        <div class="stat-label">Tipos de cliente</div>
+
+      <div class="fg">
+        <label class="fl">Nombre completo</label>
+        <input class="fi" id="inp-nombre" type="text" placeholder="Ej. Juan García">
       </div>
-      <div>
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Garantía de servicio</div>
+      <div class="fg">
+        <label class="fl">WhatsApp</label>
+        <input class="fi" id="inp-tel" type="tel" placeholder="+52 614 000 0000">
+      </div>
+      <div class="fg">
+        <label class="fl">Colonia / dirección de recolección</label>
+        <input class="fi" id="inp-dir" type="text" placeholder="Ej. Colonia Centro">
+      </div>
+      <div class="fg">
+        <label class="fl">Descripción del calzado</label>
+        <textarea class="fi" id="inp-desc" rows="3" placeholder="Ej. 2 tenis Nike blancos y unos zapatos café"></textarea>
       </div>
     </div>
   </div>
-  <div class="hero-right">
-    <div class="hero-img-placeholder">
-      <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
-        <rect x="10" y="30" width="100" height="30" rx="6" fill="white"/>
-        <rect x="25" y="15" width="65" height="25" rx="4" fill="white" opacity="0.6"/>
-        <circle cx="30" cy="65" r="10" fill="white" opacity="0.4"/>
-        <circle cx="90" cy="65" r="10" fill="white" opacity="0.4"/>
-        <rect x="0" y="40" width="15" height="12" rx="2" fill="white" opacity="0.3"/>
-        <rect x="105" y="38" width="15" height="8" rx="2" fill="white" opacity="0.3"/>
-      </svg>
-      <p>Inserta fotografía del taller o unidad</p>
-    </div>
-  </div>
-</section>
-
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner" id="ticker-inner"></div>
 </div>
 
-<!-- SERVICES -->
-<section id="servicios">
-  <div class="section-tag">Lo que hacemos</div>
-  <h2 class="section-title">NUESTROS <span class="muted">SERVICIOS</span></h2>
-  <div class="services-grid">
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
-        <circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="6"/>
-        <line x1="24" y1="6" x2="24" y2="10"/><line x1="24" y1="38" x2="24" y2="42"/>
-        <line x1="6" y1="24" x2="10" y2="24"/><line x1="38" y1="24" x2="42" y2="24"/>
-      </svg>
-      <div class="service-name">Mantenimiento Regular</div>
-      <div class="service-desc">Cambio de aceite, filtros, bujías y revisión general de fluidos para mantener tu vehículo en óptimas condiciones.</div>
-    </div>
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
-        <path d="M8 40L18 30m0 0l6-12 4 4-12 6zm14-14l8-8 4 4-8 8"/><circle cx="36" cy="12" r="4"/>
-      </svg>
-      <div class="service-name">Diagnóstico Electrónico</div>
-      <div class="service-desc">Equipos de diagnóstico de última generación para identificar fallas mecánicas y electrónicas de cualquier marca.</div>
-    </div>
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
-        <rect x="8" y="20" width="32" height="20" rx="2"/><path d="M16 20V14a8 8 0 0116 0v6"/>
-        <circle cx="24" cy="30" r="3"/><line x1="24" y1="33" x2="24" y2="36"/>
-      </svg>
-      <div class="service-name">Sistema de Frenos</div>
-      <div class="service-desc">Reparación y mantenimiento completo: pastillas, discos, líquido de frenos y revisión de ABS.</div>
-    </div>
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
-        <circle cx="24" cy="24" r="14"/><circle cx="24" cy="24" r="6"/>
-        <path d="M24 10v4M24 34v4M10 24h4M34 24h4"/>
-      </svg>
-      <div class="service-name">Alineación y Balanceo</div>
-      <div class="service-desc">Servicio de alineación de dirección, balanceo y cambio de neumáticos para todas las marcas.</div>
-    </div>
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
-        <path d="M8 12h10l4 8h18l-4 12H12L8 12z"/><circle cx="16" cy="34" r="4"/><circle cx="32" cy="34" r="4"/>
-      </svg>
-      <div class="service-name">Reparaciones Mecánicas</div>
-      <div class="service-desc">Motor, transmisión, suspensión, dirección, sistema de escape y refrigeración.</div>
-    </div>
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
-        <rect x="10" y="14" width="28" height="20" rx="2"/>
-        <path d="M18 34v4m12-4v4M14 38h20"/><path d="M22 24l4-4 4 4"/>
-      </svg>
-      <div class="service-name">Aire Acondicionado</div>
-      <div class="service-desc">Recarga, mantenimiento y reparación del sistema de climatización vehicular.</div>
-    </div>
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
-        <circle cx="24" cy="24" r="14"/>
-        <path d="M18 24h6l2-6 2 12 2-6h6"/>
-      </svg>
-      <div class="service-name">Sistema Eléctrico</div>
-      <div class="service-desc">Batería, alternador, luces, sistema de encendido y diagnóstico eléctrico completo.</div>
-    </div>
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
-        <path d="M12 36c0-6.627 5.373-12 12-12s12 5.373 12 12"/><path d="M24 8v4m-10 2l3 3m14-3l-3 3M8 26h4m24 0h4"/>
-        <circle cx="24" cy="22" r="4"/>
-      </svg>
-      <div class="service-name">Inspecciones</div>
-      <div class="service-desc">Revisión de seguridad completa para garantizar que tu vehículo cumple todos los estándares.</div>
-    </div>
-  </div>
-</section>
-
-<!-- CLIENTES -->
-<div class="clients-section">
-  <div class="section-tag" style="text-align:center">Atendemos a</div>
-  <div class="clients-row">
-    <div class="client-badge">Particulares</div>
-    <div class="client-badge">Empresas Privadas</div>
-    <div class="client-badge">Gobierno</div>
-    <div class="client-badge">Flotillas</div>
-    <div class="client-badge">Todas las marcas</div>
-  </div>
-</div>
-
-<!-- NOSOTROS -->
-<div class="about-strip" id="nosotros">
-  <div class="about-img-side">
-    <svg width="200" height="140" viewBox="0 0 200 140" fill="white">
-      <rect x="20" y="60" width="160" height="50" rx="8"/>
-      <rect x="45" y="30" width="105" height="40" rx="6" opacity="0.6"/>
-      <circle cx="50" cy="116" r="16" opacity="0.4"/>
-      <circle cx="150" cy="116" r="16" opacity="0.4"/>
-      <rect x="0" y="70" width="25" height="20" rx="3" opacity="0.3"/>
-      <rect x="175" y="68" width="25" height="14" rx="3" opacity="0.3"/>
-    </svg>
-  </div>
-  <div class="about-text-side">
-    <div class="section-tag">Sobre RASA</div>
-    <h2 class="section-title">MÁS DE <span class="accent">20 AÑOS</span><br>DE CONFIANZA</h2>
-    <p>Somos un taller mecánico automotriz en Chihuahua con más de dos décadas de experiencia atendiendo a particulares, empresas y dependencias de gobierno.</p>
-    <p>Nuestro equipo de mecánicos certificados utiliza herramientas especializadas y piezas de calidad acorde al presupuesto de cada cliente, garantizando siempre el mejor resultado.</p>
-    <p style="color:#888">📍 Av. Agustín Melgar 2103, Las Granjas, Chihuahua &nbsp;·&nbsp; Tel: 614 164 7132</p>
-  </div>
-</div>
-
-<!-- CITA -->
-<section id="cita">
-  <div class="section-tag">¿Listo para agendar?</div>
-  <h2 class="section-title">AGENDA TU <span class="muted">CITA</span></h2>
-  <div class="cita-grid">
+<!-- TOTAL FLOTANTE -->
+<div class="total-flotante" id="total-flotante">
+  <div class="total-inner">
     <div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Nombre completo</label>
-          <input type="text" placeholder="Juan García" id="f-nombre">
-        </div>
-        <div class="form-group">
-          <label>Teléfono</label>
-          <input type="tel" placeholder="614 000 0000" id="f-tel">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Correo electrónico</label>
-        <input type="email" placeholder="tu@correo.com" id="f-email">
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Vehículo (marca / modelo)</label>
-          <input type="text" placeholder="Nissan Sentra 2019" id="f-vehiculo">
-        </div>
-        <div class="form-group">
-          <label>Servicio</label>
-          <select id="f-servicio">
-            <option value="">Seleccionar...</option>
-            <option>Mantenimiento (aceite/filtros)</option>
-            <option>Diagnóstico electrónico</option>
-            <option>Frenos</option>
-            <option>Alineación y balanceo</option>
-            <option>Aire acondicionado</option>
-            <option>Sistema eléctrico</option>
-            <option>Reparación mecánica</option>
-            <option>Otro</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Fecha preferida</label>
-          <input type="date" id="f-fecha">
-        </div>
-        <div class="form-group">
-          <label>Hora preferida</label>
-          <select id="f-hora">
-            <option value="">Seleccionar...</option>
-            <option>8:30 am</option><option>9:00 am</option><option>9:30 am</option>
-            <option>10:00 am</option><option>10:30 am</option><option>11:00 am</option>
-            <option>11:30 am</option><option>12:00 pm</option><option>2:00 pm</option>
-            <option>3:00 pm</option><option>4:00 pm</option><option>5:00 pm</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Descripción del problema (opcional)</label>
-        <textarea id="f-msg" placeholder="Describe brevemente qué le pasa a tu vehículo..."></textarea>
-      </div>
-      <button class="btn-primary" style="width:100%;padding:1rem" onclick="enviarCita()">Solicitar Cita</button>
+      <div class="total-label">Total a pagar</div>
+      <div class="total-val" id="total-val">$0</div>
     </div>
-    <div class="cita-info">
-      <h3>INFORMACIÓN DE CONTACTO</h3>
-      <div class="info-row">
-        <div class="info-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <div>
-          <div class="info-label">Dirección</div>
-          <div class="info-val">Av. Agustín Melgar 2103, Las Granjas<br>31100 Chihuahua, Chih.</div>
-        </div>
-      </div>
-      <div class="info-row">
-        <div class="info-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.86 9.11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.81 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17z"/></svg>
-        </div>
-        <div>
-          <div class="info-label">Teléfono</div>
-          <div class="info-val">614 164 7132</div>
-        </div>
-      </div>
-      <div class="info-row">
-        <div class="info-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div>
-          <div class="info-label">Horario</div>
-          <div class="info-val">Lunes – Viernes: 8:30 am – 6:00 pm<br>Sábados: 9:00 am – 2:00 pm</div>
-        </div>
-      </div>
-      <div style="margin-top:2rem;padding:1.5rem;border:1px solid #222;background:#111">
-        <div style="font-size:0.72rem;color:#666;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.5rem">¿Tienes preguntas rápidas?</div>
-        <p style="font-size:0.85rem;color:#999;line-height:1.5;margin-bottom:1rem">Usa el chatbot RASA en la esquina inferior derecha. Puede responder preguntas, verificar disponibilidad y ayudarte a agendar.</p>
-        <button class="btn-outline" style="font-size:0.75rem;padding:0.6rem 1.2rem" onclick="document.getElementById('chat-toggle').click()">Abrir Chat ↗</button>
-      </div>
-    </div>
+    <button class="btn-continuar" onclick="enviarPedido()">PEDIR AHORA 👟</button>
   </div>
-</section>
-
-<!-- FOOTER -->
-<footer id="contacto">
-  <div>
-    <div class="footer-logo">R<span>A</span>SA</div>
-    <p style="margin-top:0.5rem">Taller Mecánico Automotriz · Chihuahua, México</p>
-  </div>
-  <p>© 2026 Servicio Automotriz RASA · Todos los derechos reservados</p>
-</footer>
-
-<!-- CHATBOT -->
-<div id="chat-bubble">
-  <div id="chat-panel">
-    <div class="chat-header">
-      <div class="chat-avatar">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-          <path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/>
-          <path d="M8 9h.01M16 9h.01M8 14s1.5 2 4 2 4-2 4-2"/>
-        </svg>
-      </div>
-      <div class="chat-header-info">
-        <h4>RASA Bot</h4>
-        <span>Asistente del taller · En línea</span>
-      </div>
-      <button onclick="toggleChat()" style="margin-left:auto;background:none;border:none;color:rgba(255,255,255,0.7);cursor:pointer;font-size:1.2rem">✕</button>
-    </div>
-    <div class="chat-messages" id="chat-messages"></div>
-    <div class="chat-quick" id="chat-quick">
-      <button class="quick-btn" onclick="sendQuick('¿Cuáles son sus servicios?')">Servicios</button>
-      <button class="quick-btn" onclick="sendQuick('¿Cuál es su horario?')">Horario</button>
-      <button class="quick-btn" onclick="sendQuick('Quiero agendar una cita')">Agendar cita</button>
-      <button class="quick-btn" onclick="sendQuick('¿Cuánto cuesta el cambio de aceite?')">Precios</button>
-    </div>
-    <div class="chat-input-row">
-      <input type="text" id="chat-input" placeholder="Escribe tu pregunta..." onkeydown="if(event.key==='Enter')sendChat()">
-      <button onclick="sendChat()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-        </svg>
-      </button>
-    </div>
-  </div>
-  <button id="chat-toggle" onclick="toggleChat()">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-    </svg>
-  </button>
 </div>
 
-<!-- TOAST -->
-<div id="toast"></div>
+<div class="confirmacion" id="confirmacion">
+  <div class="conf-ico">✨</div>
+  <h2 class="conf-title">¡Pedido enviado!</h2>
+  <p class="conf-sub" id="conf-sub">Te contactamos pronto para coordinar la recolección.</p>
+  <div class="conf-card" id="conf-detalle"></div>
+  <button class="btn-nuevo" onclick="resetForm()">Hacer otro pedido</button>
+</div>
 
 <script>
-// --- TICKER ---
-const tickerItems = ["Cambio de aceite","Diagnóstico electrónico","Frenos y discos","Alineación y balanceo","Aire acondicionado","Sistema eléctrico","Suspensión","Transmisión","Más de 20 años de experiencia"];
-const ti = document.getElementById('ticker-inner');
-let html = tickerItems.map(t => `<span class="ticker-item">${t} <span class="ticker-dot">◆</span></span>`).join('');
-ti.innerHTML = html + html;
+const WA='525587090730';
+const SVCS={
+  'tenis-ext':{precio:80,nombre:'Tenis exterior',tiempo:'mismo día',cant:0},
+  'tenis-comp':{precio:160,nombre:'Tenis completo',tiempo:'2 días',cant:0},
+  'boleada':{precio:50,nombre:'Boleada de zapatos',tiempo:'1 día',cant:0},
+  'tapas':{precio:120,nombre:'Tapas de zapatos',tiempo:'1-2 días',cant:0},
+  'tapitas':{precio:140,nombre:'Tapitas para tacones',tiempo:'1-2 días',cant:0},
+  'medias':{precio:160,nombre:'Medias vidas',tiempo:'2-3 días',cant:0},
+};
 
-// --- FORM ---
-function enviarCita() {
-  const campos = ['f-nombre','f-tel','f-email','f-vehiculo','f-servicio','f-fecha','f-hora'];
-  for(const id of campos) {
-    if(!document.getElementById(id).value) {
-      showToast('Por favor completa todos los campos requeridos');
-      return;
-    }
+function toggleSvc(id,precio,nombre,tiempo){
+  const svc=SVCS[id];
+  if(svc.cant>0) return;
+  svc.cant=1;
+  document.getElementById('svc-'+id).classList.add('activo');
+  actualizarSubtotal(id);
+  actualizarTotal();
+}
+
+function quitarSvc(id){
+  SVCS[id].cant=0;
+  document.getElementById('svc-'+id).classList.remove('activo');
+  document.getElementById('cnt-'+id).textContent='1';
+  actualizarTotal();
+}
+
+function cambiarCant(id,dir){
+  const svc=SVCS[id];
+  svc.cant=Math.max(1,svc.cant+dir);
+  document.getElementById('cnt-'+id).textContent=svc.cant;
+  actualizarSubtotal(id);
+  actualizarTotal();
+}
+
+function actualizarSubtotal(id){
+  const svc=SVCS[id];
+  document.getElementById('sub-'+id).textContent='$'+(svc.precio*svc.cant).toLocaleString('es-MX');
+}
+
+function actualizarTotal(){
+  let total=0;
+  let activos=[];
+  Object.entries(SVCS).forEach(([id,s])=>{
+    if(s.cant>0){total+=s.precio*s.cant;activos.push({id,s});}
+  });
+
+  document.getElementById('total-val').textContent='$'+total.toLocaleString('es-MX');
+  document.getElementById('total-flotante').style.display=total>0?'block':'none';
+
+  // Resumen
+  const box=document.getElementById('resumen-box');
+  const items=document.getElementById('resumen-items');
+  if(activos.length>0){
+    box.style.display='block';
+    items.innerHTML=activos.map(({id,s})=>`
+      <div class="resumen-row">
+        <span>${s.nombre} × ${s.cant}</span>
+        <span>$${(s.precio*s.cant).toLocaleString('es-MX')}</span>
+      </div>`).join('')+`
+      <div class="resumen-row">
+        <span>TOTAL</span>
+        <span>$${total.toLocaleString('es-MX')}</span>
+      </div>`;
+  } else {
+    box.style.display='none';
   }
-  showToast('✓ ¡Solicitud enviada! Te contactaremos para confirmar tu cita.');
-  campos.forEach(id => document.getElementById(id).value = '');
-  document.getElementById('f-msg').value = '';
 }
 
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.style.display = 'block';
-  setTimeout(() => { t.style.display = 'none'; }, 3500);
+function enviarPedido(){
+  const nombre=document.getElementById('inp-nombre').value.trim();
+  const tel=document.getElementById('inp-tel').value.trim();
+  const dir=document.getElementById('inp-dir').value.trim();
+  const desc=document.getElementById('inp-desc').value.trim();
+
+  if(!nombre||!tel||!dir){alert('Por favor llena nombre, WhatsApp y dirección');return;}
+
+  let activos=Object.entries(SVCS).filter(([,s])=>s.cant>0);
+  if(!activos.length){alert('Selecciona al menos un servicio');return;}
+
+  let total=activos.reduce((a,[,s])=>a+s.precio*s.cant,0);
+  let lineas=activos.map(([,s])=>`   • ${s.nombre} × ${s.cant} = $${(s.precio*s.cant).toLocaleString('es-MX')}`).join('\n');
+
+  const msg=`🧹 *NUEVO PEDIDO — De Sucio a Chulo*\n\n`+
+    `👤 *Cliente:* ${nombre}\n`+
+    `📱 *WhatsApp:* ${tel}\n`+
+    `📍 *Dirección:* ${dir}\n\n`+
+    `👟 *Servicios:*\n${lineas}\n\n`+
+    `💰 *TOTAL: $${total.toLocaleString('es-MX')} MXN*\n`+
+    `📝 *Calzado:* ${desc||'Sin descripción'}`;
+
+  document.getElementById('conf-sub').textContent=`¡Listo ${nombre}! Te contactamos pronto para coordinar la recolección.`;
+  document.getElementById('conf-detalle').innerHTML=
+    activos.map(([,s])=>`<div class="crow"><span class="ck">${s.nombre} × ${s.cant}</span><span class="cv">$${(s.precio*s.cant).toLocaleString('es-MX')}</span></div>`).join('')+
+    `<div class="crow" style="border-top:1px solid var(--amarillo);margin-top:6px;padding-top:8px"><span class="ck" style="font-weight:700">TOTAL</span><span class="cv" style="font-size:1.1rem">$${total.toLocaleString('es-MX')} MXN</span></div>
+     <div class="crow"><span class="ck">Recolección en</span><span class="cv">${dir}</span></div>`;
+
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
+  document.getElementById('main-flow').style.display='none';
+  document.getElementById('total-flotante').style.display='none';
+  document.getElementById('confirmacion').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// --- CHATBOT ---
-let chatOpen = false;
-let chatInited = false;
-const RASA_INFO = `
-Eres el asistente virtual del Taller Mecánico Automotriz RASA en Chihuahua, México. 
-Responde siempre en español de manera amigable, concisa y profesional.
-
-INFORMACIÓN DEL TALLER:
-- Nombre: Taller Mecánico Automotriz RASA
-- Dirección: Av. Agustín Melgar 2103, Las Granjas, 31100 Chihuahua, Chih.
-- Teléfono: 614 164 7132
-- Horario: Lunes a Viernes 8:30am–6:00pm, Sábados 9:00am–2:00pm
-- Más de 20 años de experiencia
-- Atienden: particulares, empresas y gobierno
-
-SERVICIOS QUE OFRECEN:
-1. Mantenimiento regular (cambio de aceite, filtros, bujías)
-2. Diagnóstico electrónico
-3. Frenos (pastillas, discos, ABS)
-4. Alineación y balanceo / cambio de neumáticos
-5. Reparaciones mecánicas (motor, transmisión, suspensión, dirección, escape)
-6. Sistema eléctrico (batería, alternador, luces)
-7. Aire acondicionado
-8. Inspecciones de seguridad
-
-PARA AGENDAR CITA: necesitan nombre, teléfono, vehículo, servicio, fecha y hora preferida.
-Disponibilidad general: Lunes a Viernes 8:30am–6:00pm, Sábados 9:00am–2:00pm.
-
-INSTRUCCIONES: Si el usuario quiere agendar, pídele los datos necesarios uno a uno. 
-Nunca inventes precios exactos, di que varían según el vehículo y sugiere llamar o visitar.
-Mantén respuestas cortas (máx 3–4 oraciones). Si no sabes algo, di que pueden llamar al 614 164 7132.
-`;
-
-let chatHistory = [];
-
-function toggleChat() {
-  chatOpen = !chatOpen;
-  document.getElementById('chat-panel').classList.toggle('open', chatOpen);
-  if(chatOpen && !chatInited) { chatInited = true; initChat(); }
+function cotizar(servicio){
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(`Hola! Me interesa cotizar: *${servicio}*. ¿Me pueden dar más información?`)}`, '_blank');
 }
 
-function initChat() {
-  addMsg('bot', '¡Hola! 👋 Soy el asistente de Taller RASA. Puedo ayudarte con información sobre nuestros servicios, horarios, disponibilidad o agendar tu cita. ¿En qué te puedo ayudar?');
-}
-
-function addMsg(role, text) {
-  const msgs = document.getElementById('chat-messages');
-  const div = document.createElement('div');
-  div.className = 'msg ' + role;
-  div.textContent = text;
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-}
-
-function showTyping() {
-  const msgs = document.getElementById('chat-messages');
-  const div = document.createElement('div');
-  div.className = 'msg bot typing'; div.id = 'typing-indicator';
-  div.innerHTML = '<span></span><span></span><span></span>';
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-}
-
-function removeTyping() {
-  const t = document.getElementById('typing-indicator');
-  if(t) t.remove();
-}
-
-function sendQuick(msg) { sendMessage(msg); }
-
-function sendChat() {
-  const input = document.getElementById('chat-input');
-  const msg = input.value.trim();
-  if(!msg) return;
-  input.value = '';
-  sendMessage(msg);
-}
-
-async function sendMessage(userMsg) {
-  addMsg('user', userMsg);
-  chatHistory.push({ role: 'user', content: userMsg });
-  document.getElementById('chat-quick').style.display = 'none';
-  showTyping();
-
-  try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 400,
-        system: RASA_INFO,
-        messages: chatHistory
-      })
-    });
-    const data = await response.json();
-    const reply = data.content && data.content[0] ? data.content[0].text : 'Lo siento, no pude conectarme. Llámanos al 614 164 7132.';
-    removeTyping();
-    addMsg('bot', reply);
-    chatHistory.push({ role: 'assistant', content: reply });
-  } catch(e) {
-    removeTyping();
-    addMsg('bot', 'Hubo un problema de conexión. Por favor llámanos al 614 164 7132 o visítanos.');
-  }
+function resetForm(){
+  Object.keys(SVCS).forEach(id=>{SVCS[id].cant=0;document.getElementById('svc-'+id).classList.remove('activo');document.getElementById('cnt-'+id).textContent='1';});
+  document.getElementById('inp-nombre').value='';
+  document.getElementById('inp-tel').value='';
+  document.getElementById('inp-dir').value='';
+  document.getElementById('inp-desc').value='';
+  document.getElementById('resumen-box').style.display='none';
+  document.getElementById('total-flotante').style.display='none';
+  document.getElementById('main-flow').style.display='block';
+  document.getElementById('confirmacion').style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
 </body>
